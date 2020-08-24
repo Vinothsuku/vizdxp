@@ -105,13 +105,13 @@ def main():
     if page == 'Getting Started':
         st.markdown("# Welcome.")
         st.markdown(main2, unsafe_allow_html=True)
-        st.markdown("Please provide your valuable feedback [here](https://docs.google.com/forms/d/e/1FAIpQLSfK-QMgN29xR8hHKImiJ4DzNOnlZJ5W-1ZIdR4DcK4i0CZcPg/viewform?usp=pp_url)", unsafe_allow_html=True)
+        st.markdown("Please provide your valuable suggestions, feature requests, notifying issues in [github](https://github.com/Vinothsuku/vizdxp)", unsafe_allow_html=True)
         st.sidebar.markdown("")
         # st.markdown(slide_link, unsafe_allow_html=True)
         st.sidebar.markdown("")
         st.sidebar.markdown("<br><br><br> <br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> ", unsafe_allow_html=True)
         st.sidebar.markdown("")
-        st.sidebar.markdown("### contact: vsuku15@gmail.com")
+        st.sidebar.markdown("### contact: vizdxp@gmail.com")
     if df is not None:
         df_raw, rows, cols = load_dataset(df)
         if page == 'Dataset stats':
