@@ -2,7 +2,7 @@
 
 ## Simple Data Visualization web application
 
-vizdxp is an open-source web app designed via streamlit weaved with plotly library. **Its incredibly Simple - Just drag & drop any csv and explore the data visually.**By default the application will figure out better visualization based on user selections. Feel free to customize as needed.
+vizdxp is an open-source web app designed via streamlit weaved with plotly library. **Its incredibly Simple - Just drag & drop any csv and explore the data visually.** By default the application will figure out better visualization based on user selections. Feel free to customize as needed.
 
 ## Keys
 - **Simple** and quick for any **Exploratory data Analysis**
