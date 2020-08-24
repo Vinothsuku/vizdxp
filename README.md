@@ -13,6 +13,12 @@ vizdxp is an open-source web app designed via streamlit weaved with plotly libra
 - No more static reports
 - Chart types included in v0.0.4 - Scatter, Bar, Pie, Heatmap and Box plots
 
+## Installation
+- pip install vizdxp
+- python -m vizdxp
+
+Explore vizdxp through a browser. Once installation is complete, user can work totally offline.
+
 ## Plans for Aug-Sep 2020
 - Filtering Data
 - Overall Performance improvement
