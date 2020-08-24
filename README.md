@@ -21,6 +21,9 @@ Pre-Requisite: Python >=3.7.1
 
 Explore vizdxp through a browser. Once installation is complete, user can work totally offline.
 
+**This package is also hosted [online] (https://vizdxp.herokuapp.com). Pls feel free to explore with your own data**
+
+
 ## Plans for Aug-Sep 2020
 - Filtering Data
 - Overall Performance improvement
@@ -28,5 +31,5 @@ Explore vizdxp through a browser. Once installation is complete, user can work t
 
 ## License
 - vizdxp is completely free and licensed under MIT license.
-- Vizdxp is developed with Streamlit as the framework, which is under Apache 2.0 license. Further details on [streamlit](https://www.streamlit.io/)
+- Vizdxp is developed with Streamlit as the framework. Further details on [streamlit](https://www.streamlit.io/)
 - Plotly is the visualization library used. Further details on [plotly](https://plotly.com/)
