@@ -21,7 +21,7 @@ Pre-Requisite: Python >=3.7.1
 
 Explore vizdxp through a browser. Once installation is complete, user can work totally offline.
 
-**This package is also hosted [online] (https://vizdxp.herokuapp.com). Pls feel free to explore with your own data**
+**This package is also hosted [online](https://vizdxp.herokuapp.com).** Pls feel free to explore with your own data
 
 
 ## Plans for Aug-Sep 2020
