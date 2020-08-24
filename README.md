@@ -14,6 +14,8 @@ vizdxp is an open-source web app designed via streamlit weaved with plotly libra
 - Chart types included in v0.0.4 - Scatter, Bar, Pie, Heatmap and Box plots
 
 ## Installation
+Pre-Requisite: Python >=3.7.1
+
 - pip install vizdxp
 - python -m vizdxp
 
@@ -25,6 +27,6 @@ Explore vizdxp through a browser. Once installation is complete, user can work t
 - Possible Feature requests based on feedback raised in github
 
 ## License
-vizdxp is completely free and licensed under MIT license.
-Vizdxp is developed with Streamlit as the framework, which is under Apache 2.0 license. Further details on [streamlit](https://www.streamlit.io/)
-Plotly is the visualization library used. Further details on [plotly](https://plotly.com/)
+- vizdxp is completely free and licensed under MIT license.
+- Vizdxp is developed with Streamlit as the framework, which is under Apache 2.0 license. Further details on [streamlit](https://www.streamlit.io/)
+- Plotly is the visualization library used. Further details on [plotly](https://plotly.com/)
