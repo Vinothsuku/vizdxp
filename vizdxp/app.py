@@ -35,15 +35,15 @@ main1 = "<div><span class='fontteal'>vizdxp is an open-source visualization tool
 main2 = """
 A **big heartfelt Thanks** for your time in trying our tiny-simple-data visualization tool.<br>
 
-<p>vizdxp is an open-source web app designed via streamlit weaved with plotly library. <span class='fontblue'><b>Its incredibly Simple - Just drag & drop any csv and explore the data visually.</b></span> By default the application will figure out better visualization based on user selections. \
+<p>vizdxp is an open-source web app designed via streamlit weaved with plotly library. <span class='fontteal'><b>Its incredibly Simple - Just drag & drop any csv and explore the data visually.</b></span> By default the application will figure out better visualization based on user selections. \
 Feel free to customize as needed. </p>
 
 <b>Advantages</b>
-- **Simple** and quick for any <span class='fontblue'>**Exploratory data Analysis**</span>
-- Create interactive <span class='fontblue'>**Dashboard web app within minutes**</span> from any csv and share the findings
-- <span class='fontblue'>**Deploy**</span> it as a web application in your own workstations too
-- By <span class='fontblue'>**Default**</span> - chart types and aggregations are applied based on columns selected by user, null rows are removed, Date fields are converted to multiple subfields
-- Highly <span class='fontblue'>**Customizable**</span>
+- **Simple** and quick for any <span class='fontteal'>**Exploratory Data Analysis**</span>
+- Create interactive <span class='fontteal'>**Dashboard web app within minutes**</span> from any csv and share the findings
+- <span class='fontteal'>**Deploy**</span> it as a web application in your own workstations too
+- By <span class='fontteal'>**Default**</span> - chart types and aggregations are applied based on columns selected by user, null rows are removed, Date fields are converted to multiple subfields
+- Highly <span class='fontteal'>**Customizable**</span>
 - No more static reports<br>
 
 <b>Plans for Aug-Sep 2020</b>
@@ -101,8 +101,8 @@ def main():
     st.sidebar.markdown('''# <span class='fontteal'>vizdxp</span>''', unsafe_allow_html=True)
     st.sidebar.text('')
     df = st.sidebar.file_uploader('Upload data in csv format', type='csv', encoding='auto')
-    page = st.sidebar.radio("Go-To",('Getting Started','Dataset stats','Visual Data Explorer', 'Report'), key="page_selection")
-    if page == 'Getting Started':
+    page = st.sidebar.radio("Go-To",('Getting started','Dataset stats','Visual data explorer', 'Report'), key="page_selection")
+    if page == 'Getting started':
         st.markdown("# Welcome.")
         st.markdown(main2, unsafe_allow_html=True)
         st.markdown("Please provide your valuable suggestions, feature requests, notifying issues in [github](https://github.com/Vinothsuku/vizdxp)", unsafe_allow_html=True)
@@ -124,26 +124,28 @@ def main():
             if stats_n:
                 st.markdown('**Few stats on the dataset**')
                 st.cache(st.write(df_raw.describe(include='all').T, width=600, height=900))
-        elif page == 'Visual Data Explorer':
+        elif page == 'Visual data explorer':
             df_raw = convert_date(df_raw)
             process_date(df_raw)
             df_raw = fillna_values(df_raw)
             clrchk = st.sidebar.selectbox("Color Palette",('Viridis','Cividis','Inferno', 'Plasma', 'Electric', 'Rainbow', 'Sunset','Purpor','Teal','Dense', 'Deep','Speed'))
             viz_page = st.sidebar.radio("Let's do",('Plot 1','Plot 2'), key="plot_selection")
-            st.markdown("# Visual Data Explorer.")
+            st.markdown("# Visual data explorer.")
             col_list = list(df_raw.columns)
             col_list.insert(0,'None')
             if viz_page == 'Plot 1':
                 x_axis1 = st.sidebar.selectbox('select xaxis',(df_raw.columns), 1)
                 y_axis1 = st.sidebar.selectbox('select yaxis',(df_raw.columns), 2)
                 z_axis1 = st.sidebar.selectbox('Addn col for color coding / zaxis',(col_list))
+				if x_axis1 == y_axis1:
+                    st.error("Pls choose different columns in x and y axis for generating plots")
                 plot1 = st.checkbox("Generate Plot 1", key='Plot1_Generate')
                 if z_axis1 == 'None' and is_numeric_dtype(df_raw[y_axis1]):
                     acheck1 = st.radio("Aggregate options [bar and scatter]",('None','mean','sum','count'), index=1, key="sidebar_agg_plot1")
                 else:
                     acheck1 = st.radio("Aggregate options [bar and scatter]",('None','count'), index=1, key="sidebar_agg_plot2")
                 charts = st.sidebar.selectbox("Chart Type",('default','scatter','bar','pie', 'heatmap','histogram','box','multi_yaxis_scatter'), key="sidebar_chart_plot1")
-                if plot1:
+                if plot1 and x_axis1 != y_axis1:
                     if charts=='default':
                         if df_raw[x_axis1].nunique() > 100:
                             scmodechk1 = st.radio("Scatter Mode",('markers','markers+lines','lines'), 0, key="scatter_m_radio")
@@ -167,7 +169,7 @@ def main():
                         st.plotly_chart(fig)
                     elif charts == 'heatmap':
                         if z_axis1 == 'None':
-                            st.markdown('''## <span class='fontcoral'>Choose zaxis for generating heatmap</span>''', unsafe_allow_html=True)
+							st.error("Error: Pls choose zaxis as well in the side pane for generating heatmap")
                         elif is_numeric_dtype(df_raw[z_axis1]):
                             htmap_agg1 = st.sidebar.radio("Aggregate options by zaxis [heatmap] ",('mean','sum','count'), key="heatmap_agg")
                             fig = heatmap_plot(df_raw, x_axis1, y_axis1, z_axis1, htmap_agg1, color=clrchk)
@@ -195,13 +197,15 @@ def main():
                 x_axis2 = st.sidebar.selectbox('select xaxis ',(df_raw.columns), 1, key="plt2_xaxis")
                 y_axis2 = st.sidebar.selectbox('select yaxis ',(df_raw.columns), 2, key="plt2_yaxis")
                 z_axis2 = st.sidebar.selectbox('Addn col for color coding / zaxis',(col_list), key="plt2_zaxis")
+                if x_axis2 == y_axis2:
+                    st.error("Pls choose different columns in x and y axis for generating plots")
                 plot2 = st.checkbox("Generate Plot 2", key='Plot2_Generate')
                 if z_axis2 == 'None' and is_numeric_dtype(df_raw[y_axis2]):
                     acheck2 = st.radio("Aggregate options - [bar and scatter]",('None','mean','sum','count'), index=1, key="sidebar_agg_plot2")
                 else:
                     acheck2 = st.radio("Aggregate options - [bar and scatter]",('None','count'), index=1, key="sidebar_agg_plot2b")
                 charts2 = st.sidebar.selectbox("Chart Type: ",('default','scatter','bar','pie', 'heatmap', 'histogram','box', 'multi_yaxis_scatter'), key="sb_chart_plot2")
-                if plot2:
+                if plot2 and x_axis2 != y_axis2:
                     if charts2 =='default':
                         if df_raw[x_axis2].nunique() > 100:
                             scmodechk2 = st.radio("Scatter Mode",('markers','markers+lines','lines'), 0, key="scatter_m_radio2")
@@ -223,9 +227,9 @@ def main():
                         pieaxis2 = st.radio("Pie plot on",('xaxis','yaxis'), 0, key="pie_axis_radio2")
                         fig2 = pie_plot(df_raw, x_axis2, y_axis2, pieaxis2, color=clrchk)
                         st.plotly_chart(fig2)
-                    elif charts == 'heatmap':
+                    elif charts2 == 'heatmap':
                         if z_axis2 == 'None':
-                            st.markdown('''## <span class='fontcoral'>Choose zaxis for generating heatmap</span>''', unsafe_allow_html=True)
+							st.error("Error: Pls choose zaxis as well in the side pane for generating heatmap")
                         elif is_numeric_dtype(df_raw[z_axis2]):
                             htmap_agg2 = st.sidebar.radio("Aggregate options by zaxis  [heatmap]",('mean','sum','count'), key="heatmap_agg2")
                             fig2 = heatmap_plot(df_raw, x_axis2, y_axis2, z_axis2, htmap_agg2, color=clrchk)
@@ -233,12 +237,12 @@ def main():
                         else:
                             fig2 = heatmap_plot(df_raw, x_axis2, y_axis2, z_axis2, 'count', color=clrchk)
                             st.plotly_chart(fig2)
-                    elif charts == 'histogram':
+                    elif charts2 == 'histogram':
                         histbox2 = st.radio("Histogram Norm ",('count','percent','probability','density','probability density'), 0, key="hist_norm_radio2")
                         histaxis2 = st.radio("Histogram on ",('xaxis','yaxis','x and yaxis'), 0, key="hist_axis_radio2")
                         fig2 = histogram_plot(df_raw, x_axis2, y_axis2, histbox2, histaxis2)
                         st.plotly_chart(fig2)
-                    elif charts == 'box':
+                    elif charts2 == 'box':
                         boxpt2 = st.radio("Box plot points Norm ",('False','all','outliers','suspectedoutliers'), 1, key="box_points_radio2")
                         boxaxis2 = st.radio("Boxplot on ",('xaxis','yaxis','x and yaxis'), 0, key="box_axis_radio2")
                         fig2 = box_plot(df_raw, x_axis2, y_axis2, boxpt2, boxaxis2)
