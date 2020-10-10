@@ -16,6 +16,7 @@ vizdxp is an open-source web app designed via streamlit weaved with plotly libra
 ## Installation
 
 - pip install vizdxp
+
 Run: python -m vizdxp
 
 Explore vizdxp through a browser. Once installation is complete, user can work totally offline.
