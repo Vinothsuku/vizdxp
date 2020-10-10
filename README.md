@@ -22,11 +22,6 @@ Explore vizdxp through a browser. Once installation is complete, user can work t
 
 **This package is also hosted [online](https://vizdxp.herokuapp.com).** Pls feel free to explore with your own data
 
-
-## Plans for Aug-Sep 2020
-- Filtering Data
-- Overall Performance improvement
-
 ## License
 - vizdxp is completely free and licensed under MIT license.
 - Vizdxp is developed with Streamlit as the framework. Further details on [streamlit](https://www.streamlit.io/)
