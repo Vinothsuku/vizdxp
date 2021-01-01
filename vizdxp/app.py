@@ -18,6 +18,8 @@ st.beta_set_page_config(
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+	
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 target_css = os.path.join(os.path.dirname(__file__), 'style.css')
 
@@ -94,8 +96,8 @@ def video():
 
 def main():
     st.set_option('deprecation.showfileUploaderEncoding', False)
-    st.sidebar.markdown('''# <span class='fontteal'>vizdxp</span>''', unsafe_allow_html=True)
-    st.sidebar.text('')
+    prodheader = "<div><span class='fontteal'><span class='bold'>vizdxp</span></div>"
+    st.sidebar.markdown(prodheader, unsafe_allow_html=True)
     df = st.sidebar.file_uploader('Upload data in csv format', type='csv', encoding='auto')
     page = st.sidebar.radio("Go-To",('Getting started','Dataset stats','Visual data explorer', 'Report'), key="page_selection")
     if page == 'Getting started':
