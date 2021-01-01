@@ -45,10 +45,6 @@ Feel free to customize as needed. </p>
 - By <span class='fontteal'>**Default**</span> - chart types and aggregations are applied based on columns selected by user, null rows are removed, Date fields are converted to multiple subfields
 - Highly <span class='fontteal'>**Customizable**</span>
 - No more static reports<br>
-
-<b>Plans for Aug-Sep 2020</b>
-- Filtering Data
-- Overall Performance improvement
 """
 
 hide_streamlit_style = """
