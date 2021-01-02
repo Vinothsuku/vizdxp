@@ -11,11 +11,11 @@ vizdxp is an open-source web app designed via streamlit weaved with plotly libra
 - By **Default** - chart types and aggregations are applied based on columns selected by user, null rows are removed, date fields are converted to multiple subfields
 - Highly **Customizable**
 - No more static reports
-- Chart types included in v0.0.4 - Scatter, Bar, Pie, Heatmap, Histogram and Box plots
+- Chart types included - Scatter, Bar, Pie, Heatmap, Histogram and Box plots
 
 ## Installation
 
-- pip install vizdxp
+pip install vizdxp
 
 Run: python -m vizdxp
 
@@ -24,6 +24,6 @@ Explore vizdxp through a browser. Once installation is complete, user can work t
 **This package is also hosted [online](https://vizdxp.herokuapp.com).** Pls feel free to explore with your own data
 
 ## License
-- vizdxp is completely free and licensed under MIT license.
+- vizdxp is completely free, open sourced and licensed under MIT license.
 - Vizdxp is developed with Streamlit as the framework. Further details on [streamlit](https://www.streamlit.io/)
 - Plotly is the visualization library used. Further details on [plotly](https://plotly.com/)
