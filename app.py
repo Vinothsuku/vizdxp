@@ -8,7 +8,7 @@ from pandas.api.types import is_numeric_dtype, is_string_dtype, is_datetime64_an
 from vizdxp.graphs import scatter_plot, goscatter_plot, bar_plot, pie_plot, heatmap_plot, histogram_plot, box_plot
 import os
 
-st.beta_set_page_config(
+st.set_page_config(
     page_title="vizdxp",
     page_icon=":koala:",
     layout="wide",
@@ -98,7 +98,7 @@ def main():
     st.set_option('deprecation.showfileUploaderEncoding', False)
     prodheader = "<div><span class='fontteal'><span class='bold'>vizdxp</span></div>"
     st.sidebar.markdown(prodheader, unsafe_allow_html=True)
-    df = st.sidebar.file_uploader('Upload data in csv format', type='csv', encoding='auto')
+    df = st.sidebar.file_uploader('Upload data in csv format', type='csv')
     page = st.sidebar.radio("Go-To",('Getting started','Dataset stats','Visual data explorer', 'Report'), key="page_selection")
     if page == 'Getting started':
         st.markdown("# Welcome.")
