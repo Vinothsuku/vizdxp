@@ -23,6 +23,10 @@ Explore vizdxp through a browser. Once installation is complete, user can work t
 
 **This package is also hosted [online](https://vizdxp.herokuapp.com).** Pls feel free to explore with your own data
 
+## Blog
+
+Wrriten a blog on vizdxp [here](https://medium.com/analytics-vidhya/introducing-vizdxp-for-quick-exploratory-data-analysis-and-visualizations-89128326e8ac)
+
 ## License
 - vizdxp is completely free, open sourced and licensed under MIT license.
 - Vizdxp is developed with Streamlit as the framework. Further details on [streamlit](https://www.streamlit.io/)
