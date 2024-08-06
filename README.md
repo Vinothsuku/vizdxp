@@ -21,8 +21,6 @@ Run: python -m vizdxp
 
 Explore vizdxp through a browser. Once installation is complete, user can work totally offline.
 
-**This package is also hosted [online](https://vizdxp.herokuapp.com).** Pls feel free to explore with your own data
-
 ## Blog
 
 Wrriten a blog on vizdxp [here](https://medium.com/analytics-vidhya/introducing-vizdxp-for-quick-exploratory-data-analysis-and-visualizations-89128326e8ac)
