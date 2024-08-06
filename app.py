@@ -19,8 +19,6 @@ def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 	
-st.set_option('deprecation.showPyplotGlobalUse', False)
-
 target_css = os.path.join(os.path.dirname(__file__), 'style.css')
 
 local_css(target_css)
@@ -57,14 +55,14 @@ hide_streamlit_style = """
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-@st.cache(suppress_st_warning=True, allow_output_mutation=True, show_spinner=False)
+@st.cache_data(show_spinner=False)
 def convert_date(df):
     df = df.apply(lambda label: pd.to_datetime(label, errors='ignore', infer_datetime_format=True)
         if label.dtypes == object
         else label, axis=0)
     return df
 
-@st.cache(suppress_st_warning=True, show_spinner=False)
+@st.cache_data(show_spinner=False)
 def process_date(df):
     for label,content in df.items():
         if is_datetime64_any_dtype(content):
@@ -74,28 +72,27 @@ def process_date(df):
             attr = ['Year', 'Month', 'Day', 'Dayofweek', 'Dayofyear','Quarter']
             for n in attr: df[targ_pre + n] = getattr(fld.dt, n.lower())
 
-@st.cache(show_spinner=False)
+@st.cache_data(show_spinner=False)
 def load_dataset(df):
     df_raw = pd.read_csv(df, low_memory=False, encoding='latin-1')
     df_raw.dropna(how='all', inplace=True)
     rows = df_raw.shape[0]; cols = df_raw.shape[1]
     return df_raw, rows, cols
 
-@st.cache(show_spinner=False)
+@st.cache_data(show_spinner=False)
 def fillna_values(df):
     for label,content in df.items():
         if is_string_dtype(content):
             df[label].fillna(value='Null', inplace=True)
     return df
 
-@st.cache(suppress_st_warning=True)
+@st.cache_data(show_spinner=False)
 def video():
     demo_file1 = open('vizdxp_ctds.mp4', 'rb')
     demo_rec1 = demo_file1.read()
     return demo_rec1
 
 def main():
-    st.set_option('deprecation.showfileUploaderEncoding', False)
     prodheader = "<div><span class='fontteal'><span class='bold'>vizdxp</span></div>"
     st.sidebar.markdown(prodheader, unsafe_allow_html=True)
     df = st.sidebar.file_uploader('Upload data in csv format', type='csv')
