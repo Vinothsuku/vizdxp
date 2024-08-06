@@ -2,7 +2,7 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 
-@st.cache(suppress_st_warning=True, allow_output_mutation=True, show_spinner=False)
+@st.cache_data(show_spinner=False)
 def scatter_plot(df,xaxis,yaxis,zaxis,modchk,aggfunc, color):
     if aggfunc == 'None':
         if zaxis == 'None':
@@ -33,7 +33,7 @@ def scatter_plot(df,xaxis,yaxis,zaxis,modchk,aggfunc, color):
     fig.update_traces(mode=modchk)
     return fig
 
-@st.cache(suppress_st_warning=True, allow_output_mutation=True, show_spinner=False)
+@st.cache_data(show_spinner=False)
 def goscatter_plot(df,xaxis,multiaxis,aggfunc):
     fig = go.Figure()
     for i in range(len(multiaxis)):
@@ -43,7 +43,7 @@ def goscatter_plot(df,xaxis,multiaxis,aggfunc):
     return fig
 
 
-@st.cache(suppress_st_warning=True, allow_output_mutation=True, show_spinner=False)
+@st.cache_data(show_spinner=False)
 def bar_plot(df,xaxis,yaxis,zaxis,modechk, aggfunc,color):
     if aggfunc == 'None':
         if zaxis == 'None':
@@ -76,7 +76,7 @@ def bar_plot(df,xaxis,yaxis,zaxis,modechk, aggfunc,color):
     fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide')
     return fig
 
-@st.cache(suppress_st_warning=True, show_spinner=False)
+@st.cache_data(show_spinner=False)
 def pie_plot(df, xaxis, yaxis, pieaxis, color):
     if pieaxis == 'xaxis':
         tmp1 = df[xaxis].value_counts().reset_index()[:10]
@@ -87,7 +87,7 @@ def pie_plot(df, xaxis, yaxis, pieaxis, color):
     fig.update_traces(textposition='outside', textinfo='percent+label')
     return fig
 
-@st.cache(suppress_st_warning=True, show_spinner=False)
+@st.cache_data(show_spinner=False)
 def heatmap_plot(df, xaxis, yaxis, zaxis, hagg, color):
     if hagg == 'mean':
         df_temp = df.groupby([xaxis, yaxis])[zaxis].mean().reset_index()
@@ -102,7 +102,7 @@ def heatmap_plot(df, xaxis, yaxis, zaxis, hagg, color):
     # st.plotly_chart(fig)
     return fig
 
-@st.cache(suppress_st_warning=True, show_spinner=False)
+@st.cache_data(show_spinner=False)
 def histogram_plot(df, xaxis, yaxis, histbox, histaxis):
     fig = go.Figure()
     if histbox=='count': histbox=''
@@ -118,7 +118,7 @@ def histogram_plot(df, xaxis, yaxis, histbox, histaxis):
     fig.update_layout(plot_bgcolor='rgb(255,255,255)', height=450, width=1200)
     return fig
 
-@st.cache(suppress_st_warning=True, show_spinner=False)
+@st.cache_data(show_spinner=False)
 def box_plot(df, xaxis, yaxis, boxpt, boxaxis):
     fig = go.Figure()
     if boxpt=='False': boxpt=False
