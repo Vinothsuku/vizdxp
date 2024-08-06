@@ -1,5 +1,5 @@
 import sys
-import streamlit.cli as stcli
+from streamlit.web import cli as stcli
 import os
 
 target_path = os.path.join(os.path.dirname(__file__), 'app.py')
