@@ -132,7 +132,7 @@ def main():
                 x_axis1 = st.sidebar.selectbox('select xaxis',(df_raw.columns), 1)
                 y_axis1 = st.sidebar.selectbox('select yaxis',(df_raw.columns), 2)
                 z_axis1 = st.sidebar.selectbox('Addn col for color coding / zaxis',(col_list))
-				if x_axis1 == y_axis1:
+                if x_axis1 == y_axis1:
                     st.error("Pls choose different columns in x and y axis for generating plots")
                 plot1 = st.checkbox("Generate Plot 1", key='Plot1_Generate')
                 if z_axis1 == 'None' and is_numeric_dtype(df_raw[y_axis1]):
@@ -163,8 +163,8 @@ def main():
                         fig = pie_plot(df_raw, x_axis1, y_axis1, pieaxis, color=clrchk)
                         st.plotly_chart(fig)
                     elif charts == 'heatmap':
-                        if z_axis1 == 'None':
-							st.error("Error: Pls choose zaxis as well in the side pane for generating heatmap")
+                        if z_axis1 == 'None':\
+                            st.error("Error: Pls choose zaxis as well in the side pane for generating heatmap")
                         elif is_numeric_dtype(df_raw[z_axis1]):
                             htmap_agg1 = st.sidebar.radio("Aggregate options by zaxis [heatmap] ",('mean','sum','count'), key="heatmap_agg")
                             fig = heatmap_plot(df_raw, x_axis1, y_axis1, z_axis1, htmap_agg1, color=clrchk)
@@ -224,7 +224,7 @@ def main():
                         st.plotly_chart(fig2)
                     elif charts2 == 'heatmap':
                         if z_axis2 == 'None':
-							st.error("Error: Pls choose zaxis as well in the side pane for generating heatmap")
+                            st.error("Error: Pls choose zaxis as well in the side pane for generating heatmap")
                         elif is_numeric_dtype(df_raw[z_axis2]):
                             htmap_agg2 = st.sidebar.radio("Aggregate options by zaxis  [heatmap]",('mean','sum','count'), key="heatmap_agg2")
                             fig2 = heatmap_plot(df_raw, x_axis2, y_axis2, z_axis2, htmap_agg2, color=clrchk)
