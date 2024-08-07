@@ -57,7 +57,7 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 @st.cache_data(show_spinner=False)
 def convert_date(df):
-    df = df.apply(lambda label: pd.to_datetime(label, errors='ignore', infer_datetime_format=True)
+    df = df.apply(lambda label: pd.to_datetime(label, errors='ignore')
         if label.dtypes == object
         else label, axis=0)
     return df
