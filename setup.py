@@ -7,7 +7,7 @@ setuptools.setup(
     name="vizdxp",
     version="0.2",
     author="vinoth sukumaran",
-    author_email="vinoth.suku@hotmail.com",
+    author_email="vsuku15@gmail.com",
     description="Simple data visualization web app",
     long_description=long_description,
     long_description_content_type="text/markdown",
